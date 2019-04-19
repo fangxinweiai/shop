@@ -1,4 +1,4 @@
-package org.lanqiao.test;
+package org.lanqiao.test.service;
 
 import org.junit.Test;
 import org.lanqiao.service.UserService;

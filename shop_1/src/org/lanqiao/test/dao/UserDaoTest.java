@@ -1,4 +1,4 @@
-package org.lanqiao.test;
+package org.lanqiao.test.dao;
 
 import java.sql.SQLException;
 
