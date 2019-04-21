@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,29 +33,29 @@ body {
 		<div class="row">
 			<div
 				style="border: 1px solid #e4e4e4; width: 930px; margin-bottom: 10px; margin: 0 auto; padding: 10px; margin-bottom: 10px;">
-				<a href="./index.htm">首页&nbsp;&nbsp;&gt;</a> <a href="./蔬菜分类.htm">蔬菜&nbsp;&nbsp;&gt;</a>
-				<a>无公害蔬菜</a>
+				<a href="./index.htm">首页&nbsp;&nbsp;&gt;</a> <a href="./蔬菜分类.htm">${product.category.cname}&nbsp;&nbsp;&gt;</a>
+				<a>${product.pname }</a>
 			</div>
 
 			<div style="margin: 0 auto; width: 950px;">
 				<div class="col-md-6">
 					<img style="opacity: 1; width: 400px; height: 350px;" title=""
 						class="medium"
-						src="image/r___________renleipic_01/bigPic5f3622b8-028a-4e62-a77f-f41a16d715ed.jpg">
+						src="${pageContext.request.contextPath}/${product.pimage}">
 				</div>
 
 				<div class="col-md-6">
 					<div>
-						<strong>大冬瓜</strong>
+						<strong>${product.pname}</strong>
 					</div>
 					<div
 						style="border-bottom: 1px dotted #dddddd; width: 350px; margin: 10px 0 10px 0;">
-						<div>编号：751</div>
+						<div>编号：${product.pid}</div>
 					</div>
 
 					<div style="margin: 10px 0 10px 0;">
-						亿家价: <strong style="color: #ef0101;">￥：4.78元/份</strong> 参 考 价：
-						<del>￥6.00元/份</del>
+						亿家价: <strong style="color: #ef0101;">￥:${product.shop_price}元/份</strong> 参 考 价：
+						<del>￥${product.market_price}元/份</del>
 					</div>
 
 					<div style="margin: 10px 0 10px 0;">
@@ -79,6 +80,7 @@ body {
 							</a> &nbsp;收藏商品
 						</div>
 					</div>
+					
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -90,7 +92,7 @@ body {
 
 				<div>
 					<img
-						src="image/r___________renleipic_01/bigPic139f030b-d68b-41dd-be6d-b94cc568d3c5.jpg">
+						src="${pageContext.request.contextPath}/${product.pimage}">
 				</div>
 
 				<div
@@ -109,11 +111,12 @@ body {
 							</tr>
 							<tr>
 								<th width="10%">标重</th>
-								<td>500</td>
+								<td>500g</td>
 							</tr>
+
 							<tr>
-								<th width="10%">浮动</th>
-								<td>200</td>
+								<th width="10%">描述信息</th>
+								<td>${product.pdesc} </td>
 							</tr>
 						</tbody>
 					</table>

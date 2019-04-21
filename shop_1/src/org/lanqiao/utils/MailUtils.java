@@ -18,6 +18,11 @@ public class MailUtils {
 	private static final String password = "qsgtexlepootieii";
 	private static final String sendProtocol = "smtp";
 	private static final String smtpServer = "smtp.qq.com";
+
+	/*
+	 * public static void main(String[] args) {
+	 * System.out.println(sendMail(from,"xdasdsaf")); }
+	 */
 	public static boolean sendMail(String email, String emailMsg) {
 		// 1.创建一个程序与邮件服务器会话对象 Session
 
@@ -35,7 +40,7 @@ public class MailUtils {
 		
 
 		Session session = Session.getInstance(props);
-
+		//session.setDebug(true);
 		// 2.创建一个Message，它相当于是邮件内容
 		Message message = new MimeMessage(session);
 		Transport transport = null;

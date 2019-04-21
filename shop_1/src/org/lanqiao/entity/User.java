@@ -3,18 +3,11 @@ package org.lanqiao.entity;
 import java.util.Date;
 
 public class User {
-	@Override
-	public String toString() {
-		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", name=" + name + ", email="
-				+ email + ", telephone=" + telephone + ", birthday=" + birthday + ", sex=" + sex + ", state=" + state
-				+ ", code=" + code + "]";
-	}
+	
 	private String uid;
 	private String username;
 	private String password;
-	private String name;
 	private String email;
-	private String telephone;
 	private Date birthday;
 	private String sex;
 	private int state;//是否激活
@@ -38,24 +31,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+	
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -79,5 +62,11 @@ public class User {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", email="
+				+ email  + ", birthday=" + birthday + ", sex=" + sex + ", state=" + state
+				+ ", code=" + code + "]";
 	}
 }

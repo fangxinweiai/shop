@@ -17,8 +17,8 @@ public class CheckUsernameServlet extends HttpServlet {
 		//获得用户名
 		String username = request.getParameter("username");
 		
-		UserService service = new UserService();
-		boolean isExist = service.checkUsername(username);
+		UserService userService = new UserService();
+		boolean isExist = userService.checkUsername(username);
 		
 		String json = "{\"isExist\":"+isExist+"}";
 		

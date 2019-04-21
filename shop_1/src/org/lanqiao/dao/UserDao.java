@@ -10,9 +10,9 @@ import org.lanqiao.utils.DataSourceUtils;
 public class UserDao {
 	public int regist(User user) throws SQLException {
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into user values(?,?,?,?,?,?,?,?)";
 		int update = runner.update(sql, user.getUid(),user.getUsername(),user.getPassword(),
-				user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),
+				user.getEmail(),user.getBirthday(),
 				user.getSex(),user.getState(),user.getCode());
 		return update;
 	}
@@ -31,5 +31,10 @@ public class UserDao {
 		User user = runner.query(sql, new BeanHandler<User>(User.class), username);
 		return user;
 	}
-
+	//用户登录的方法
+	public User login(String username, String password) throws SQLException {
+		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "select * from user where username=? and password=?";
+		return runner.query(sql, new BeanHandler<User>(User.class), username,password);
+	}
 }

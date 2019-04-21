@@ -4,9 +4,9 @@ import java.util.List;
 
 public class PageBean<T> {
 	private int currentPage;
-	private int currentCount;
-	private int totalCount;
-	private int totalPage;
+	private int currentCount;  //
+	private int totalCount;  //商品的总件数
+	private int totalPage;  //总共的页数
 	private List<T> list;
 	public int getCurrentPage() {
 		return currentPage;

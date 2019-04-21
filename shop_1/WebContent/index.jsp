@@ -68,21 +68,21 @@
 				<div class="col-md-2" style="border:1px solid #E7E7E7;border-right:0;padding:0;">
 					<img src="products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-10" id="hotProductList">
 					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
-						<a href="product_info.htm">
+						<a href="product_info.jsp">
 							<img src="products/hao/middle01.jpg" width="500px" height="200px" style="display: inline-block;">
 						</a>
 					</div>
-					<c:forEach items="${hotProductList}" var="hotPro">
+				<%-- 	<c:forEach items="${hotProductList}" var="hotPro">
 						<div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;">
-							<a href="product_info.htm">
+							<a href="product_info.jsp">
 								<img src="${pageContext.request.contextPath}/${hotPro.pimage}" width="130" height="130" style="display: inline-block;">
 							</a>
-							<p><a href="product_info.html" style='color:#666'>${hotPro.pname}</a></p>
+							<p><a href="product_info.jsp" style='color:#666'>${hotPro.pname}</a></p>
 							<p><font color="#E4393C" style="font-size:16px">&yen;${hotPro.shop_price }</font></p>
 						</div>
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 			</div>
 			<br/>
@@ -99,23 +99,20 @@
 				<div class="col-md-2" style="border:1px solid #E7E7E7;border-right:0;padding:0;">
 					<img src="products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
 				</div>
-				<div class="col-md-10">
-					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
-						<a href="product_info.htm">
+				<div class="col-md-10" id="newProductList">
+					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;" >
+						<a href="product_info.jsp">
 							<img src="products/hao/middle01.jpg" width="500px" height="200px" style="display: inline-block;">
 						</a>
 					</div>
-					<c:forEach items="${newProductList }" var="newPro">
-
-						<div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;">
-							<a href="product_info.htm">
-								<img src="${pageContext.request.contextPath }/${newPro.pimage }" width="130" height="130" style="display: inline-block;">
-							</a>
-							<p><a href="product_info.html" style='color:#666'>${newPro.pname }</a></p>
-							<p><font color="#E4393C" style="font-size:16px">&yen;${newPro.shop_price }</font></p>
-						</div>
-
-					</c:forEach>
+					
+					<%-- <div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;" >
+						<a href="product_info.jsp">
+							<img src="${pageContext.request.contextPath}/${newPro.pimage}" width="130" height="130" style="display: inline-block;">
+						</a>
+						<p><a href="ProductServlet?method=productInfo&pid=${newPro.pid}&cid=${newPro.category.cid}" style='color:#666'>${newPro.pname}</a></p>
+						<p><font color="#E4393C" style="font-size:16px">&yen;${newPro.shop_price}</font></p>
+					</div> --%>
 					
 				</div>
 			</div>			
@@ -123,7 +120,50 @@
 			<!-- 引入footer.jsp -->
 			<jsp:include page="/footer.jsp"></jsp:include>
 			
+			
+			<script type="text/javascript">
+			//footer.jsp加载完毕后 去服务器端获得所有的最热的商品数据
+				$(function(){
+					var content = "";
+					$.post(      //ajax加载
+						"${pageContext.request.contextPath}/ProductServlet?method=indexHotProducts",
+						function(data){
+							//动态创建html语言
+							for(var i=0;i<data.length;i++){
+								content += "<div class='col-md-2' style='text-align:center;height:200px;padding:10px 0px;'>"
+						+"<a href='product_info.jsp'><img src='${pageContext.request.contextPath}/" + data[i].pimage + "' width='130' height='130' style='display: inline-block;'></a>"
+						+"<p><a href='ProductServlet?method=productInfo&pid="+ data[i].pid + "&cid=" + data[i].cid + "' style='color:#666'>" + data[i].pname + "</a></p><p><font color='#E4393C' style='font-size:16px'>&yen;"
+						+ data[i].shop_price + "</font></p></div>";
+								//console.log(content);
+							}
+							
+							$("#hotProductList").append(content);
+						},
+						"json"
+					);
+				});
+				//footer.jsp加载完毕后 去服务器端获得所有的最新的商品数据
+				$(function(){
+					var content = "";
+					$.post(      //ajax加载
+						"${pageContext.request.contextPath}/ProductServlet?method=indexNewProducts",
+						function(data){
+							//动态创建html语言
+							for(var i=0;i<data.length;i++){
+								content += "<div class='col-md-2' style='text-align:center;height:200px;padding:10px 0px;'>"
+						+"<a href='product_info.jsp'><img src='${pageContext.request.contextPath}/" + data[i].pimage + "' width='130' height='130' style='display: inline-block;'></a>"
+						+"<p><a href='ProductServlet?method=productInfo&pid="+ data[i].pid + "&cid=" + data[i].cid + "' style='color:#666'>" + data[i].pname + "</a></p><p><font color='#E4393C' style='font-size:16px'>&yen;"
+						+ data[i].shop_price + "</font></p></div>";
+								//console.log(content);
+							}
+							
+							$("#newProductList").append(content);
+						},
+						"json"
+					);
+				});
+			</script>
 		</div>
 	</body>
-
+	
 </html>

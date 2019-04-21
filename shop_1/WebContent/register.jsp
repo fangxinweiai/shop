@@ -56,12 +56,12 @@ font {
 			//目的：对输入的username进行ajax校验
 			$.ajax({
 				"async":false,
-				"url":"${pageContext.request.contextPath}/checkUsername",
+				"url":"${pageContext.request.contextPath}/CheckUsernameServlet",
 				"data":{"username":value},
 				"type":"POST",
 				"dataType":"json",
 				"success":function(data){
-					flag = data.isExist;
+					flag = data.isExist; //判断用户名是否存在,存在为true,不存在为false
 				}
 			});
 			
@@ -134,7 +134,7 @@ font {
 			<div class="col-md-8"
 				style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
 				<font>会员注册</font>USER REGISTER
-				<form id="myform" class="form-horizontal" action="${pageContext.request.contextPath }/register" method="post" style="margin-top: 5px;">
+				<form id="myform" class="form-horizontal" action="${pageContext.request.contextPath }/RegisterServlet" method="post" style="margin-top: 5px;">
 					<div class="form-group">
 						<label for="username" class="col-sm-2 control-label">用户名</label>
 						<div class="col-sm-6">
@@ -156,18 +156,12 @@ font {
 								placeholder="请输入确认密码">
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-6">
 							<input type="email" class="form-control" id="inputEmail3" name="email"
 								placeholder="Email">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="usercaption" class="col-sm-2 control-label">姓名</label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control" id="usercaption" name="name"
-								placeholder="请输入姓名">
 						</div>
 					</div>
 					<div class="form-group opt">
@@ -179,7 +173,7 @@ font {
 							<label class="radio-inline"> 
 								<input type="radio" name="sex" id="sex2" value="female">女
 							</label>
-							<label class="error" for="sex" style="display:none ">您没有第三种选择</label>
+							<label class="error" for="sex" style="display:none ">请选择性别</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -188,19 +182,6 @@ font {
 							<input type="date" class="form-control" name="birthday">
 						</div>
 					</div>
-
-					<div class="form-group">
-						<label for="date" class="col-sm-2 control-label">验证码</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" name="checkCode">
-
-						</div>
-						<div class="col-sm-2">
-							<img src="./image/captcha.jhtml" />
-						</div>
-
-					</div>
-
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input type="submit" width="100" value="注册" name="submit"

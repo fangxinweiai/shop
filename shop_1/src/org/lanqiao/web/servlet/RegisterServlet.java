@@ -53,37 +53,33 @@ public class RegisterServlet extends HttpServlet {
 		
 		//private String uid;
 		user.setUid(CommonsUtils.getUUID());
-		//private String telephone;
-		user.setTelephone(null);
 		//private int state;//是否激活
 		user.setState(0);
 		//private String code;//激活码
 		String activeCode = CommonsUtils.getUUID();
 		user.setCode(activeCode);
-		
-		
 		//将user传递给service层
-		UserService service = new UserService();
-		boolean isRegisterSuccess = service.regist(user);
+		UserService userService = new UserService();
+		boolean isRegisterSuccess = userService.regist(user);
 		
 		//是否注册成功
 		if(isRegisterSuccess){
 			//发送激活邮件
 			String emailMsg = "恭喜您注册成功，请点击下面的连接进行激活账户"
-					+ "<a href='http://localhost:8080/HeimaShop/active?activeCode="+activeCode+"'>"
-							+ "</a>";
+					+ "<a href='http://localhost:8080/shop_1/ActiveServlet?activeCode="+activeCode+"'>"
+					+ "http://localhost:8080/shop_1/active?activeCode="+activeCode+"</a>";
 			boolean isSend = MailUtils.sendMail(user.getEmail(), emailMsg);
 			if(isSend) {
 				//跳转到注册成功页面
 				response.sendRedirect(request.getContextPath()+"/registerSuccess.jsp");
 			} else {
 				//跳转到失败的提示页面
+				System.out.println("邮箱验证失败");
 				response.sendRedirect(request.getContextPath()+"/registerFail.jsp");
 			}
-			
-			
 		}else{
 			//跳转到失败的提示页面
+			System.out.println("注册失败");
 			response.sendRedirect(request.getContextPath()+"/registerFail.jsp");
 		}
 		

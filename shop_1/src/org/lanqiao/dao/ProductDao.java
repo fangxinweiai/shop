@@ -1,6 +1,7 @@
 package org.lanqiao.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -21,8 +22,17 @@ public class ProductDao {
 
 	public List<Product> findNewProductList() throws SQLException {
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "select * from product order by pdate desc limit ?,?";
-		return runner.query(sql, new BeanListHandler<Product>(Product.class),0,9);
+		String sql = "select pid,pname,market_price,shop_price,pimage,pdate,is_hot,pdesc,pflag,cid from product order by pdate desc limit ?,?";
+		List<Product> newProductList = new ArrayList<>();
+		
+		List<Product> temp = runner.query(sql, new BeanListHandler<Product>(Product.class),0,9);
+		for (Product product : temp) {
+			String sql1 = "select cid,cname from category where cid = ?";
+			Category category = runner.query(sql1, new BeanHandler<Category>(Category.class),product.getCid());
+			product.setCategory(category);
+			newProductList.add(product);
+		}
+		return newProductList;
 	}
 
 	public List<Category> findAllCategory() throws SQLException {

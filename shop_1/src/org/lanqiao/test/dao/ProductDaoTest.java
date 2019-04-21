@@ -8,9 +8,9 @@ import org.lanqiao.entity.Product;
 
 public class ProductDaoTest {
 	@Test
-	public void findHotProductListTest() throws SQLException {
+	public void findNewProductListTest() throws SQLException {
 		ProductDao productDao = new ProductDao();
-		List<Product> products = productDao.findHotProductList();
+		List<Product> products = productDao.findNewProductList();
 		System.out.println(products);
 	}
 }

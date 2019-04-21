@@ -3,12 +3,13 @@ package org.lanqiao.web.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.lanqiao.service.UserService;
-
+@WebServlet("/ActiveServlet")
 public class ActiveServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -19,8 +20,8 @@ public class ActiveServlet extends HttpServlet {
 		//获得激活码
 		String activeCode = request.getParameter("activeCode");
 		
-		UserService service = new UserService();
-		service.active(activeCode);
+		UserService userService = new UserService();
+		userService.active(activeCode);
 		
 		//跳转到登录页面
 		response.sendRedirect(request.getContextPath()+"/login.jsp");

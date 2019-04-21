@@ -13,6 +13,8 @@ public class Product {
 	private int is_hot;
 	private String pdesc;
 	private int pflag;
+	private int cid;   //添加了冗余字段
+	
 	private Category category;
 	public String getPid() {
 		return pid;
@@ -73,6 +75,12 @@ public class Product {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
 	}
 	@Override
 	public String toString() {
