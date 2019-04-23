@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>黑马商城首页</title>
+		<title>蓝桥商城首页</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -70,7 +70,7 @@
 				</div>
 				<div class="col-md-10" id="hotProductList">
 					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
-						<a href="product_info.jsp">
+						<a href="javascript:void(0);">
 							<img src="products/hao/middle01.jpg" width="500px" height="200px" style="display: inline-block;">
 						</a>
 					</div>
@@ -101,7 +101,7 @@
 				</div>
 				<div class="col-md-10" id="newProductList">
 					<div class="col-md-6" style="text-align:center;height:200px;padding:0px;" >
-						<a href="product_info.jsp">
+						<a href="javascript:void(0);">
 							<img src="products/hao/middle01.jpg" width="500px" height="200px" style="display: inline-block;">
 						</a>
 					</div>
@@ -127,12 +127,14 @@
 					var content = "";
 					$.post(      //ajax加载
 						"${pageContext.request.contextPath}/ProductServlet?method=indexHotProducts",
-						function(data){
+	
+						function(data) {
 							//动态创建html语言
 							for(var i=0;i<data.length;i++){
+								var href = " href='ProductServlet?method=productInfo&pid=" + data[i].pid;
 								content += "<div class='col-md-2' style='text-align:center;height:200px;padding:10px 0px;'>"
-						+"<a href='product_info.jsp'><img src='${pageContext.request.contextPath}/" + data[i].pimage + "' width='130' height='130' style='display: inline-block;'></a>"
-						+"<p><a href='ProductServlet?method=productInfo&pid="+ data[i].pid + "&cid=" + data[i].cid + "' style='color:#666'>" + data[i].pname + "</a></p><p><font color='#E4393C' style='font-size:16px'>&yen;"
+						+"<a" + href +"'><img src='${pageContext.request.contextPath}/" + data[i].pimage + "' width='130' height='130' style='display: inline-block;'></a>"
+						+"<p><a" + href + "' style='color:#666'>" + data[i].pname + "</a></p><p><font color='#E4393C' style='font-size:16px'>&yen;"
 						+ data[i].shop_price + "</font></p></div>";
 								//console.log(content);
 							}
@@ -145,14 +147,15 @@
 				//footer.jsp加载完毕后 去服务器端获得所有的最新的商品数据
 				$(function(){
 					var content = "";
-					$.post(      //ajax加载
+					$.post(    
 						"${pageContext.request.contextPath}/ProductServlet?method=indexNewProducts",
 						function(data){
 							//动态创建html语言
 							for(var i=0;i<data.length;i++){
+								var href = " href='ProductServlet?method=productInfo&pid=" + data[i].pid;
 								content += "<div class='col-md-2' style='text-align:center;height:200px;padding:10px 0px;'>"
-						+"<a href='product_info.jsp'><img src='${pageContext.request.contextPath}/" + data[i].pimage + "' width='130' height='130' style='display: inline-block;'></a>"
-						+"<p><a href='ProductServlet?method=productInfo&pid="+ data[i].pid + "&cid=" + data[i].cid + "' style='color:#666'>" + data[i].pname + "</a></p><p><font color='#E4393C' style='font-size:16px'>&yen;"
+						+"<a" + href +"'><img src='${pageContext.request.contextPath}/" + data[i].pimage + "' width='130' height='130' style='display: inline-block;'></a>"
+						+"<p><a" + href + "' style='color:#666'>" + data[i].pname + "</a></p><p><font color='#E4393C' style='font-size:16px'>&yen;"
 						+ data[i].shop_price + "</font></p></div>";
 								//console.log(content);
 							}

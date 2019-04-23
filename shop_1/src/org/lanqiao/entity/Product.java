@@ -76,6 +76,8 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	
 	public int getCid() {
 		return cid;
 	}

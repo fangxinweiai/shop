@@ -3,11 +3,11 @@ package org.lanqiao.entity;
 import java.util.List;
 
 public class PageBean<T> {
-	private int currentPage;
-	private int currentCount;  //
+	private int currentPage;   //当前页
+	private int currentCount;  //当前页的显示的数量
 	private int totalCount;  //商品的总件数
 	private int totalPage;  //总共的页数
-	private List<T> list;
+	private List<T> list;   //将当前页的物品封装到集合中
 	public int getCurrentPage() {
 		return currentPage;
 	}

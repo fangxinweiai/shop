@@ -17,7 +17,7 @@
 				<li><a href="register.jsp">注册</a></li>
 			</c:if>
 			<c:if test="${!empty user }">
-				<li style="color:red">欢迎您，${user.username }</li>
+				<li style="color:red">欢迎您：${user.username }</li>
 				<li><a href="${pageContext.request.contextPath }/UserServlet?method=logout">退出</a></li>
 			</c:if>
 			<li><a href="cart.jsp">购物车</a></li>
@@ -63,7 +63,7 @@
 						//[{"pid":"xxx","pname":"xxxx",.....},{},{}]
 						//动态创建<li><a href="#">${category.cname }</a></li>
 						for(var i=0;i < data.length;i++){
-							content+="<li><a href='${pageContext.request.contextPath}/ProductServlet?method=productList&cid="+data[i].cid+"'>"+data[i].cname+"</a></li>";
+							content+="<li><a href='${pageContext.request.contextPath}/product_list.jsp?cid="+data[i].cid+"'>"+data[i].cname+"</a></li>";
 						}
 						
 						//将拼接好的li放置到ul中

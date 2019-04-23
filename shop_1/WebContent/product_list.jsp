@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,176 +27,41 @@ body {
 </head>
 
 <body>
-
+	
 
 	<!-- 引入header.jsp -->
 	<jsp:include page="/header.jsp"></jsp:include>
+	
 
-
-	<div class="row" style="width: 1210px; margin: 0 auto;">
-		<div class="col-md-12">
+	<div class="row" style="width: 1210px; margin: 0 auto;" id="pageBean">
+	<%-- 	<div class="col-md-12">
 			<ol class="breadcrumb">
-				<li><a href="#">首页</a></li>
+				<li><a href="index.jsp">首页</a></li>
 			</ol>
 		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10001.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>冬瓜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10002.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>圆白菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10003.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>甜玉米</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10004.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>胡萝卜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10005.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>芹菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10006.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>韭菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10007.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>香菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10008.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>土豆</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10007.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>香菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10008.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>土豆</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10007.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>香菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10008.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>土豆</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
+		<c:forEach items="${pageBean.list }" var="pro">
+		
+			<div class="col-md-2" style="height:250px">
+				<a href="${pageContext.request.contextPath }/ProductServlet?method=productInfo&pid=${pro.pid}&cid=${cid}&currentPage=${pageBean.currentPage}"> 
+					<img src="${pageContext.request.contextPath }/${pro.pimage}" width="170" height="170" style="display: inline-block;">
+				</a>
+				<p>
+					<a href="${pageContext.request.contextPath }/ProductServlet?method=productInfo&pid=${pro.pid}&cid=${cid}&currentPage=${pageBean.currentPage}" style='color: green'>${pro.pname }</a>
+				</p>
+				<p>
+					<font color="#FF0000">商城价：&yen;${pro.shop_price }</font>
+				</p>
+			</div>
+		
+		</c:forEach> --%>
+		
 
 	</div>
 
 	<!--分页 -->
 	<div style="width: 380px; margin: 0 auto; margin-top: 50px;">
-		<ul class="pagination" style="text-align: center; margin-top: 10px;">
-			<li class="disabled"><a href="#" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span></a></li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">6</a></li>
-			<li><a href="#">7</a></li>
-			<li><a href="#">8</a></li>
-			<li><a href="#">9</a></li>
-			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
-		</ul>
+		<ul class="pagination" style="text-align: center; margin-top: 10px;" id="page">
+		</ul>	
 	</div>
 	<!-- 分页结束 -->
 
@@ -223,7 +89,80 @@ body {
 
 	<!-- 引入footer.jsp -->
 	<jsp:include page="/footer.jsp"></jsp:include>
-
+	
+	
+	<script type="text/javascript">
+		//footer.jsp加载完毕后 去服务器端获得商品列表数据
+		
+		$(function(){
+			var cid = getUrlParam('cid');
+			var currentPage = getUrlParam('currentPage');
+			var content = "";
+			var Lastpage = "";
+			var everyPage = "";
+			var nextPage = "";
+			var url = "${pageContext.request.contextPath}/ProductServlet?method=productList&cid=" +cid;
+			if(currentPage != null) {
+				url = url + "&currentPage=" + currentPage;
+			}
+	
+			$.post(      //ajax加载
+				url,
+				function(data) {
+					//动态创建html语言
+					content+="<div class='col-md-12'><ol class='breadcrumb'><li><a href='index.jsp'>首页</a></li></ol></div>";
+		     		for(var i=0;i<data.list.length;i++){
+		     
+						var href = " href='${pageContext.request.contextPath}/ProductServlet?method=productInfo&pid="
+							+data.list[i].pid+"&cid="+data.list[i].cid+"&currentPage="+data.currentPage + "' ";
+						content+="<div class='col-md-2' style='height:250px'><a" + href + "><img src='${pageContext.request.contextPath }/" + data.list[i].pimage
+							+ "' width='170' height='170' style='display: inline-block;'></a><p><a" + href
+							+ "style='color: green'>" + data.list[i].pname + "</a></p><font color='#FF0000'>商城价：&yen;"
+							+ data.list[i].shop_price + "</font></p></div>"; 
+						
+					}
+						
+					$("#pageBean").html(content);
+					if(data.currentPage === 1) {
+						lastPage = "<li class='disabled'><a href='javascript:void(0);' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>";
+					} else {
+						lastPage = "<li><a  aria-label='Previous' href='product_list.jsp?cid="+cid+"&currentPage=" + (parseInt(currentPage)-1) + "'>"
+							+ "<span aria-hidden='true'>&laquo;</span>" + "</a></li>";
+					}
+					$("#page").append(lastPage);
+					for(var i = 1;i<data.totalPage+1;i++) {
+						if(i === data.currentPage) {
+							everyPage="<li class='active'><a href='javascript:void(0);'>"+i+"</a></li>";
+							$("#page").append(everyPage);
+						} else {
+							everyPage="<li><a href='product_list.jsp?cid="+ data.list[0].cid +"&currentPage=" + 
+								i + "'>"+i+"</a></li>";
+							$("#page").append(everyPage);
+						}
+					}
+					if(data.currentPage === data.totalPage) {
+						nextPage = "<li class='disabled'><a href='javascript:void(0);' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>";
+						
+					} else {
+						nextPage = "<li><a  aria-label='Next' href='product_list.jsp?cid="+cid+"&currentPage=" + (parseInt(currentPage)+1) + "'>"
+						+ "<span aria-hidden='true'>&raquo;</span>" + "</a></li>";
+						
+					}
+					$("#page").append(nextPage);
+				},
+				"json"
+			);
+			
+		});
+		
+	
+		function getUrlParam(name) {
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);//search,查询 ?后面的参数并匹配正则
+		     if(r!=null)return  unescape(r[2]); return null;
+		}
+		
+	</script>
 </body>
 
 </html>

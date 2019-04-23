@@ -60,27 +60,21 @@ public class ProductServlet extends BaseServlet {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		response.getWriter().write(hotProductListJson);
-		//response.sendRedirect(request.getContextPath() + "index.jsp");
+		
 	}
 	//显示商品的详细信息功能
 	public void productInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		//获得当前页
-		String currentPage = request.getParameter("currentPage");
+		//String currentPage = request.getParameter("currentPage");
 		//获得商品类别
-		String cid = request.getParameter("cid");
-
+		//String cid = request.getParameter("cid");
 		//获得要查询的商品的pid
 		String pid = request.getParameter("pid");
-
 		ProductService productService = new ProductService();
 		Product product = productService.findProductByPid(pid);
-
 		request.setAttribute("product", product);
-		request.setAttribute("currentPage", currentPage);
-		request.setAttribute("cid", cid);
-
-
+		//request.setAttribute("currentPage", currentPage);
+		//request.setAttribute("cid", cid);
 		//获得客户端携带cookie---获得名字是pids的cookie
 		String pids = pid;
 		Cookie[] cookies = request.getCookies();
@@ -115,13 +109,10 @@ public class ProductServlet extends BaseServlet {
 				}
 			}
 		}
-
-
 		Cookie cookie_pids = new Cookie("pids",pids);
 		response.addCookie(cookie_pids);
-
+		//response.sendRedirect("product_info.jsp");
 		request.getRequestDispatcher("/product_info.jsp").forward(request, response);
-
 	}
 	//显示商品的类别的的功能
 	public void categoryList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -144,7 +135,7 @@ public class ProductServlet extends BaseServlet {
 	}
 	//根据商品的类别获得商品的列表
 	public void productList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		response.setContentType("text/html; charset=UTF-8");
 		//获得cid
 		String cid = request.getParameter("cid");
 		String currentPageStr = request.getParameter("currentPage");
@@ -153,16 +144,12 @@ public class ProductServlet extends BaseServlet {
 		}
 		int currentPage = Integer.parseInt(currentPageStr);
 		int currentCount = 12;
-
 		ProductService productService = new ProductService();
 		PageBean<Product> pageBean = productService.findProductListByCid(cid,currentPage,currentCount);
-		
 		request.setAttribute("pageBean", pageBean);
-		request.setAttribute("cid", cid);
-
+		//request.setAttribute("cid", cid);
 		//定义一个记录历史商品信息的集合
 		List<Product> historyProductList = new ArrayList<>();
-
 		//获得客户端携带名字叫pids的cookie
 		Cookie[] cookies = request.getCookies();
 		if(cookies!=null){
@@ -177,11 +164,9 @@ public class ProductServlet extends BaseServlet {
 				}
 			}
 		}
-
 		//将历史记录的集合放到域中
 		request.setAttribute("historyProductList", historyProductList);
-
-		request.getRequestDispatcher("/product_list.jsp").forward(request, response);
-
+		Gson gson = new Gson();
+		response.getWriter().write(gson.toJson(pageBean));
 	}
 }

@@ -80,7 +80,10 @@ body {
 							</a> &nbsp;收藏商品
 						</div>
 					</div>
-					
+					<div>
+						<a id="testxxx"  href="product_list.jsp?cid=${product.cid}<%=(request.getParameter("currentPage") != null ? "&currentPage="+(String)request.getParameter("currentPage"):"")
+						%>">返回列表页面</a>
+					</div>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -155,7 +158,8 @@ body {
 
 	<!-- 引入footer.jsp -->
 	<jsp:include page="/footer.jsp"></jsp:include>
-
+	<script type="text/javascript">
+	</script>
 </body>
 
 </html>
